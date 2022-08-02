@@ -7,18 +7,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import time
 import unittest
+from Main.Base.BaseTest import BaseTest
 
-class ElementTest(unittest.TestCase):
-    def setUp(self):
-        options = Options()
-        options.add_argument("start-maximized")
-        service = Service(ChromeDriverManager().install())
-        self.driver = webdriver.Chrome(service=service, options=options)
-        self.driver.get("https://demoqa.com/")
-
-    def tearDown(self):
-        self.driver.close()
-
+class ElementTest(BaseTest):
     def testElement(self):
         # actions = ActionChains(driver)
         # actions.move_to_element(driver.find_element(By.XPATH, "//h5[text()='Elements']")).perform()
