@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from seleniumpagefactory.Pagefactory import PageFactory
 
-class BasePage:
+class BasePage(PageFactory):
     def __init__(self, driver):
         self.driver = driver
 
