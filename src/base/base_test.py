@@ -5,7 +5,7 @@ from src.enums.test.Browser import Browser
 class BaseTest(unittest.TestCase):
     def setUp(self):
         driver_helper = DriverHelper()
-        driver_helper.init_driver(Browser.Edge.value)
+        driver_helper.init_driver(Browser.Edge.value, True)
         self.driver = driver_helper.get_current()
 
         self.driver.get("https://demoqa.com/")

@@ -13,21 +13,24 @@ from src.enums.test.Browser import Browser
 class DriverHelper:
     __driver = None
 
-    def init_driver(self, browser):
+    def init_driver(self, browser, headless = False):
         match browser:
             case Browser.Firefox.value:
                 options = FirefoxOptions()
+                options.headless = headless
                 service = FirefoxService(GeckoDriverManager().install())
                 self.__driver = webdriver.Firefox(service=service, options=options)
 
             case Browser.Edge.value:
                 options = EdgeOptions()
+                options.headless = headless
                 options.add_argument("start-maximized")
                 service = EdgeService(EdgeChromiumDriverManager().install())
                 self.__driver = webdriver.Edge(service=service, options=options)
 
             case _:
                 options = ChromeOptions()
+                options.headless = headless
                 options.add_argument("start-maximized")
                 service = ChromeService(ChromeDriverManager().install())
                 self.__driver = webdriver.Chrome(service=service, options=options)
