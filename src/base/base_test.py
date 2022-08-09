@@ -1,15 +1,13 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 import unittest
+from src.helpers.driver_helper import DriverHelper
+from src.enums.test.Browser import Browser
 
 class BaseTest(unittest.TestCase):
     def setUp(self):
-        options = Options()
-        options.add_argument("start-maximized")
-        service = Service(ChromeDriverManager().install())
-        self.driver = webdriver.Chrome(service=service, options=options)
+        driver_helper = DriverHelper()
+        driver_helper.init_driver(Browser.Edge.value)
+        self.driver = driver_helper.get_current()
+
         self.driver.get("https://demoqa.com/")
 
     def tearDown(self):
